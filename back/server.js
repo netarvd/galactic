@@ -1,20 +1,21 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
+const dataRoutes = require('./routes/dataRoutes')
+
+// express app
 const app = express()
-const router = express.Router()
 
-router.get('/', (req, res) => { 
+// middleware
+app.use(express.json())
+app.use(cors({origin: 'http://localhost:4000'}))
 
+app.use((req, res, next) => {
+  next()
 })
- 
-app.use(cors({origin: 'http://localhost:3000'}))
 
- 
-app.get('/', (req, res) => {
-    res.send('GET request to the homepage')
-  })
+// app.use('/api/data', dataRoutes)
 
-app.get('/products/:id', function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for all origins!'})
+app.listen(4000, () => {
+    console.log('listening for requests on port', process.env.PORT)
 })
- 
