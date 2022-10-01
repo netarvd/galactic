@@ -1,8 +1,14 @@
 const express = require('express')
+const getNASAData = require('../nasa_api')
+const { NASA_API_ROUTES } = require('../nasa_api/consts')
 const router = express.Router()
 
-router.get('/', (req, res) => { 
-    res.send('hey')
+router.get('/flr', async (req, res) => { 
+    res.json(await getNASAData(NASA_API_ROUTES.FLR));
+})
+
+router.get('/cme', async (req, res) => {
+    res.json(await getNASAData(NASA_API_ROUTES.CME));
 })
 
 module.exports = router;

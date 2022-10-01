@@ -8,14 +8,14 @@ const app = express()
 
 // middleware
 app.use(express.json())
-app.use(cors({origin: 'http://localhost:4000'}))
+app.use(cors({origin: `http://localhost:${process.env.PORT}`}))
 
 app.use((req, res, next) => {
   next()
 })
 
-// app.use('/api/data', dataRoutes)
+app.use('/api', dataRoutes)
 
-app.listen(4000, () => {
+app.listen(process.env.PORT, () => {
     console.log('listening for requests on port', process.env.PORT)
 })
