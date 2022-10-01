@@ -1,8 +1,9 @@
 import React from 'react'
+import SolarWind from '../components/SolarWind'
 
 function Home() {
   return (
-    <div>Home</div>
+    <SolarWind type='C1.3'/>
   )
 }
 
