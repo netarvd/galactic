@@ -3,13 +3,26 @@ import {
   createBrowserRouter,
   RouterProvider,
   Route,
+  BrowserRouter,
+  Routes,
 } from "react-router-dom"; 
+import Home from './pages/Home';
+
 function App() {
   return (
     <div className="App">
-    <h1 className='text-orange-500'>Galactic Team</h1>
-    </div>
+<BrowserRouter>
+    {/* <Navbar /> */}
+
+      <Routes>
+        <Route path="/" element={ <Home/>} />
+      </Routes>
+    {/* <Footer /> */}
+
+  </BrowserRouter>   
+</div>
   );
 }
 
 export default App;
+
