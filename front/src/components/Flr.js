@@ -35,17 +35,16 @@ function Flr({flrData}) {
   if(flrData) { 
     console.log('Solar flares: ', flrData)
     const newData = flrData.flat()
-  console.log('newData', flrData)
   }
 
   const CustomTooltip = ({ active, payload, label }) => {
+
     if (active && payload && payload.length) {
       return (
-        <div className=" bg-[#2451B7]">
-          <p className="label">{`Start time: ${label} : ${payload[0].value}`}</p>
-          <p className="label">{`${label}  ${payload[0].value}`}</p>
-          <p className="intro">{getIntroOfPage(label)}</p>
-          <p className="desc">Anything you want can be displayed here.</p>
+        <div className=" bg-[#FF5604] bg-opacity-70 p-4 rounded-xl border-1 border-solid border-[#FF5604] ">
+          <p className="label">{`Start time: ${label}`}</p>
+          <p className="label">{`Value: ${payload[0].value}`}</p>
+          {/* <p className="intro">{getIntroOfPage(label)}</p> */}
         </div>
       );
     }
@@ -59,10 +58,6 @@ function Flr({flrData}) {
             <h1 className='text-2xl text-white'>Solar Flare</h1>
             <h1 className='text-lg font-light text-opacity-80 text-white'>Peak time classification</h1>
             </div>
-            {/* <div className='flex gap-2 bg-yellow-400 w-min px-4 py-1 border border-yellow-200 rounded-full t bg-opacity-20 float-right'>
-            <h1 className=' text-yellow-200'>Class</h1>
-            <h1 className='text-yellow-200 font-bold'>{flrData[0].classType}</h1>
-            </div> */}
         </div>
 <div className='px-'>
         <ResponsiveContainer width="100%" height={400}>
@@ -78,8 +73,8 @@ function Flr({flrData}) {
          >
            <defs>
           <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#2451B7" />
-            <stop offset="75%" stopColor="#2451B7" stopOpacity={0.6} />
+            <stop offset="0%" stopColor="#FF5604" />
+            <stop offset="75%" stopColor="#FF5604" stopOpacity={0.7} />
           </linearGradient>
         </defs>
 
@@ -111,10 +106,10 @@ function Flr({flrData}) {
             }
               
             />
-            <Tooltip content={CustomTooltip}/>
-            {/* <Area  dataKey="power" stroke="#2451B7" fill="url(#color)" /> */}
+            <Tooltip content={CustomTooltip} />
+            {/* <Area   dataKey="classType" /> */}
 
-            <Area type="monotone" dataKey="classType" stroke="#8884d8" fill="#8884d8" />
+            <Area type="monotone" dataKey="classType" stroke="#FF5604" fill="url(#color)" />
           </AreaChart>
         </ResponsiveContainer>
 </div>

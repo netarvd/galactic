@@ -17,10 +17,12 @@ const createDrops = (numDrops) => {
 
 const Rain = ({ numDrops, baseColor }) => {
   const [dropCoordinates, setDropCoordinates] = useState([])
+  const [color, setColor] = useState();
 
   useEffect(() => {
     setDropCoordinates(createDrops(numDrops))
-  }, [numDrops])
+    setColor(baseColor);
+  }, [numDrops, baseColor])
 
   return (
     <div className='relative w-full bg-[url("/public/space-bg.jpg")]'>
