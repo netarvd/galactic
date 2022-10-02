@@ -34,8 +34,41 @@ function Home() {
         const noice = `${nice[1]}-${nice[2]}`
         flr.peakTime = noice
       }
-      const power = flr.classType.slice(1)
-      flr.classType = power
+
+      const power = flr.classType
+      if(power.startsWith('A')) { 
+        console.log('AAAAAA')
+        const scaledNum =  flr.classType = flr.classType.slice(-1) 
+        flr.classType = scaledNum
+        console.log(scaledNum)
+
+
+      } else if(power.startsWith('B')) { 
+        console.log('BBB')
+        const scaledNum = flr.classType.slice(-1) * 10
+        flr.classType = scaledNum
+        console.log(scaledNum)
+
+      } else if(power.startsWith('C')) { 
+
+        console.log('CCCC')
+        const scaledNum = flr.classType.slice(-1) * 100
+        console.log(scaledNum)
+        flr.classType = scaledNum
+
+      } else if(power.startsWith('M')) { 
+        console.log('MMM')
+        const scaledNum = flr.classType.slice(-1) * 1000
+        flr.classType = scaledNum
+        console.log(scaledNum)
+
+      } else if(power.startsWith('X')) { 
+        console.log('XXXXX')
+        const scaledNum = flr.classType.slice(-1) * 10000
+        flr.classType = scaledNum
+        console.log(scaledNum)
+
+      }
     })
       setFlrData(response[0].data)
       setCmeData(response[1].data)

@@ -91,24 +91,22 @@ function Flr({flrData}) {
             tickLine={false}
             />
             <YAxis 
-             tick={{ fill: '#E8E8E8', fontSize: '16px'}}
+             tick={{ fill: '#E8E8E8', fontSize: '12px'}}
             axisLine={false}
             tickLine={false}
-            domain={[0, 16]}
+            domain={[0, 10000]}
             dataKey="pv" tickFormatter={(number) => {
-                if(number < 4) {
+                if(number < 2500) {
                   return ['A', ]
-                } else if(number < 8) {
+                } else if(number < 5000) {
                   return ['B', ]
-                } else if(number < 12) {
+                } else if(number < 7500) {
                   return ['C', ]
-                } else if(number < 16) {
+                } else if(number < 10000) {
                   return['M', ]
-                } else if(number  === 16) {
+                } else if(number < 15000) {
                   return ['X', ]
-                } else { 
-                  return ['X', ]
-                }
+                } 
               }
             }
               
