@@ -9,19 +9,10 @@ const SOLAR_WIND_CLASSES = {
   X: 'red-500',
 }
 
-const determineNumOfDrops = (degree) => {
-  return degree * 100
-}
-
-const SolarWind = ({ type }) => {
-  const solarWindClass = type[0]
-  const degree = parseInt(type.slice(1))
-
-  //   const [numOfDrops, setNumOfDrops] = useState(determineNumOfDrops(degree))
-
+const SolarWind = ({ speed }) => {
   return (
-    <div className={`bg-black`}>
-      <Rain numDrops={determineNumOfDrops(degree)} baseColor={SOLAR_WIND_CLASSES[solarWindClass]} />
+    <div className={`flex w-full h-60 overflow-clip`}>
+      <Rain numDrops={parseInt(speed)} baseColor={SOLAR_WIND_CLASSES["A"]} />
     </div>
   )
 }

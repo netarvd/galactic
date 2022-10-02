@@ -23,11 +23,11 @@ const Rain = ({ numDrops, baseColor }) => {
   }, [numDrops])
 
   return (
-    <div>
+    <div className='w-full relative'>
       {dropCoordinates.map((drop, i) => {
         return (
           <div
-            className={`drop bg-gradient-to-b from-${baseColor} to-white`}
+            className={`drop absolute bg-gradient-to-b from-${baseColor} to-white`}
             style={{left: drop.dropLeft, top: drop.dropTop}}
             key={`drop${i}`}
           ></div>

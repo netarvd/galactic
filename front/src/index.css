@@ -6,8 +6,8 @@
   .drop {
     width: 1px;
     height: 89px;
-    position: absolute;
-    bottom: 200px;
+    /* position: absolute;
+    bottom: 200px; */
     -webkit-animation: fall 0.63s linear infinite;
     -moz-animation: fall 0.63s linear infinite;
   }

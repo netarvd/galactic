@@ -19,7 +19,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={ <Home/>} />
-        <Route path="/solar-wind" element={ <SolarWind type='C2.4'/>} />
+        <Route path="/solar-wind" element={ <SolarWind speed={541.0} />} />
       </Routes>
     {/* <Footer /> */}
 
