@@ -73,11 +73,14 @@ function Flr({flrData}) {
     return (
         <div className='p-4 text-lg bg-zinc-800 rounded-md h-full col-span-2'>
          <div className='flex place-content-between px-6 pb-4 pt-2'>
-            <h1>Solar Flare</h1>
-            <div className='flex gap-2 bg-yellow-400 w-min px-4 py-1 border border-yellow-200 rounded-full t bg-opacity-20 float-right'>
+         <div>
+            <h1 className='text-2xl text-white'>Solar Flare</h1>
+            <h1 className='text-lg font-light text-opacity-80 text-white'>Peak time classification</h1>
+            </div>
+            {/* <div className='flex gap-2 bg-yellow-400 w-min px-4 py-1 border border-yellow-200 rounded-full t bg-opacity-20 float-right'>
             <h1 className=' text-yellow-200'>Class</h1>
             <h1 className='text-yellow-200 font-bold'>{flrData[0].classType}</h1>
-            </div>
+            </div> */}
         </div>
 <div className='px-'>
         <ResponsiveContainer width="100%" height={400}>
@@ -98,13 +101,15 @@ function Flr({flrData}) {
           </linearGradient>
         </defs>
 
-            <CartesianGrid strokeDasharray="1 3" />
+            <CartesianGrid strokeDasharray="1 5" />
             <XAxis 
-            dataKey='beginTime'
+            tick={{ fill: '#E8E8E8', fontSize: '14px'}}
+            dataKey='peakTime'
             axisLine={false}
             tickLine={false}
             />
             <YAxis 
+             tick={{ fill: '#E8E8E8', fontSize: '16px'}}
             axisLine={false}
             tickLine={false}
             domain={[0, 10]}
@@ -125,9 +130,9 @@ function Flr({flrData}) {
               
             />
             <Tooltip />
-            <Area  dataKey="pv" stroke="#2451B7" fill="url(#color)" />
+            {/* <Area  dataKey="power" stroke="#2451B7" fill="url(#color)" /> */}
 
-            {/* <Area type="monotone" dataKey="pv" stroke="#8884d8" fill="#8884d8" /> */}
+            <Area type="monotone" dataKey="classType" stroke="#8884d8" fill="#8884d8" />
           </AreaChart>
         </ResponsiveContainer>
 </div>

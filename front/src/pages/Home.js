@@ -11,18 +11,31 @@ function Home() {
 
 
   useEffect(() => { 
-
     Promise.all([
       axios.get("http://localhost:3001/api/flr/"),
       axios.get("http://localhost:3001/api/cme/")
   ])
   .then(response => {
-    console.log(response[0].data, 'hsdsdjfsdfbsdjbf')
     response[0].data.map((flr) => { 
-      flr.beginTime = flr.beginTime.toISOString()
+      console.log(flr)
+      if(flr.beginTime) { 
+        const newBeginning = flr.beginTime.split('T')
+        flr.beginTime = newBeginning
+      }
+      if(flr.endTime) { 
+        const newEnd = flr.endTime.split('T')
+        flr.endTime = newEnd
+
+      }
+      if(flr.peakTime) { 
+        const newPeak = flr.peakTime.split('T')
+        const finalPeak = newPeak[1].replace('Z', ' ')
+        flr.peakTime = finalPeak
+      }
+      const power = flr.classType.slice(1)
+      flr.classType = power
     })
       setFlrData(response[0].data)
-
       setCmeData(response[1].data)
   })
   .catch(error => {
