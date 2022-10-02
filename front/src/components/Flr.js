@@ -7,9 +7,12 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 
 function Flr({flrData}) {
-  console.log('Solar flares: ', flrData)
-  const newData = flrData.flat()
-console.log('newData', flrData)
+  if(flrData) { 
+    console.log('Solar flares: ', flrData)
+    const newData = flrData.flat()
+  console.log('newData', flrData)
+  }
+
 
 
   const data = [
@@ -78,7 +81,7 @@ console.log('newData', flrData)
         </div>
 <div className='px-'>
         <ResponsiveContainer width="100%" height={400}>
-          <AreaChart data={data}
+          <AreaChart data={flrData}
           
           margin={{
               top: 10,
@@ -97,7 +100,7 @@ console.log('newData', flrData)
 
             <CartesianGrid strokeDasharray="1 3" />
             <XAxis 
-            dataKey="hour"
+            dataKey='beginTime'
             axisLine={false}
             tickLine={false}
             />
