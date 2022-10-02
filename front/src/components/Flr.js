@@ -1,83 +1,68 @@
 import { format, parseISO, subDays } from 'date-fns';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useState } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
 
 
 
+
 function Flr({flrData}) {
+
+
+  const getIntroOfPage = (label) => {
+    if (label === 'Page A') {
+      return "Page A is about men's clothing";
+    }
+    if (label === 'Page B') {
+      return "Page B is about women's dress";
+    }
+    if (label === 'Page C') {
+      return "Page C is about women's bag";
+    }
+    if (label === 'Page D') {
+      return 'Page D is about household goods';
+    }
+    if (label === 'Page E') {
+      return 'Page E is about food';
+    }
+    if (label === 'Page F') {
+      return 'Page F is about baby food';
+    }
+    return '';
+  };
+
   if(flrData) { 
     console.log('Solar flares: ', flrData)
     const newData = flrData.flat()
   console.log('newData', flrData)
   }
 
-
-
-  const data = [
-    {
-      hour: '17:00',
-      uv: 1,
-      pv: 10,
-      amt: 1,
-    },
-    {
-      hour: '18:00',
-      uv: 2,
-      pv: 3,
-      amt: 5,
-    },
-    {
-      hour: '19:00',
-      uv: 3,
-      pv: 4,
-      amt: 4,
-    },
-    {
-      hour: '20:00',
-      uv: 4,
-      pv: 8,
-      amt: 2000,
-    },
-    {
-      hour: '21:00',
-      uv: 5,
-      pv: 3,
-      amt: 1,
-    },
-    {
-      hour: '22:00',
-      uv: 6,
-      pv: 12,
-      amt: 2,
-    },
-  ];
-
-
-  
-
-// function CustomTooltip({ active, payload, label }) {
-//   if (active) {
-//     return (
-//       <div classhour="tooltip">
-//         <h4>{format(parseISO(label), "eeee, d MMM, yyyy")}</h4>
-//         <p>${payload[0].value.toFixed(2)} CAD</p>
-//       </div>
-//     );
-//   }
-//   return null;
-// }
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className=" bg-[#2451B7]">
+          <p className="label">{`Start time: ${label} : ${payload[0].value}`}</p>
+          <p className="label">{`${label}  ${payload[0].value}`}</p>
+          <p className="intro">{getIntroOfPage(label)}</p>
+          <p className="desc">Anything you want can be displayed here.</p>
+        </div>
+      );
+    }
+  }
 
   if(flrData) { 
     return (
         <div className='p-4 text-lg bg-zinc-800 rounded-md h-full col-span-2'>
          <div className='flex place-content-between px-6 pb-4 pt-2'>
-            <h1>Solar Flare</h1>
-            <div className='flex gap-2 bg-yellow-400 w-min px-4 py-1 border border-yellow-200 rounded-full t bg-opacity-20 float-right'>
+         <div>
+            <h1 className='text-2xl text-white'>Solar Flare</h1>
+            <h1 className='text-lg font-light text-opacity-80 text-white'>Peak time classification</h1>
+            </div>
+            {/* <div className='flex gap-2 bg-yellow-400 w-min px-4 py-1 border border-yellow-200 rounded-full t bg-opacity-20 float-right'>
             <h1 className=' text-yellow-200'>Class</h1>
             <h1 className='text-yellow-200 font-bold'>{flrData[0].classType}</h1>
-            </div>
+            </div> */}
         </div>
 <div className='px-'>
         <ResponsiveContainer width="100%" height={400}>
@@ -98,36 +83,38 @@ function Flr({flrData}) {
           </linearGradient>
         </defs>
 
-            <CartesianGrid strokeDasharray="1 3" />
+            <CartesianGrid strokeDasharray="1 5" />
             <XAxis 
-            dataKey='beginTime'
+            tick={{ fill: '#E8E8E8', fontSize: '14px'}}
+            dataKey='peakTime'
             axisLine={false}
             tickLine={false}
             />
             <YAxis 
+             tick={{ fill: '#E8E8E8', fontSize: '12px'}}
             axisLine={false}
             tickLine={false}
-            domain={[0, 10]}
+            domain={[0, 10000]}
             dataKey="pv" tickFormatter={(number) => {
-                if(number < 3) {
-                  return ['A', number]
-                } else if(number < 6) {
-                  return ['B', number]
-                } else if(number < 8) {
-                  return ['C', number]
-                } else if(number < 10) {
-                  return['M', number]
-                } else { 
-                  return ['X', number]
-                }
+                if(number < 2500) {
+                  return ['A', ]
+                } else if(number < 5000) {
+                  return ['B', ]
+                } else if(number < 7500) {
+                  return ['C', ]
+                } else if(number < 10000) {
+                  return['M', ]
+                } else if(number < 15000) {
+                  return ['X', ]
+                } 
               }
             }
               
             />
-            <Tooltip />
-            <Area  dataKey="pv" stroke="#2451B7" fill="url(#color)" />
+            <Tooltip content={CustomTooltip}/>
+            {/* <Area  dataKey="power" stroke="#2451B7" fill="url(#color)" /> */}
 
-            {/* <Area type="monotone" dataKey="pv" stroke="#8884d8" fill="#8884d8" /> */}
+            <Area type="monotone" dataKey="classType" stroke="#8884d8" fill="#8884d8" />
           </AreaChart>
         </ResponsiveContainer>
 </div>
