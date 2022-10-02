@@ -9,6 +9,7 @@ import {
 } from "react-router-dom"; 
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
+import SolarWind from './components/SolarWind';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={ <Home/>} />
+        <Route path="/solar-wind" element={ <SolarWind type='C2.4'/>} />
       </Routes>
     {/* <Footer /> */}
 
