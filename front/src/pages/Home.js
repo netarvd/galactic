@@ -5,7 +5,7 @@ import axios from 'axios';
 function Home() {
   const [flrData, setFlrData] = useState()
   const [cmeData, setCmeData] = useState()
-  // console.log('Coronal mass ejection: ', cmeData)
+  console.log('Coronal mass ejection: ', cmeData)
 
 
 
@@ -17,7 +17,6 @@ function Home() {
   ])
   .then(response => {
     response[0].data.map((flr) => { 
-      console.log(flr)
       if(flr.beginTime) { 
         const newBeginning = flr.beginTime.split('T')
         flr.beginTime = newBeginning
@@ -37,36 +36,26 @@ function Home() {
 
       const power = flr.classType
       if(power.startsWith('A')) { 
-        console.log('AAAAAA')
         const scaledNum =  flr.classType = flr.classType.slice(-1) 
         flr.classType = scaledNum
-        console.log(scaledNum)
 
 
       } else if(power.startsWith('B')) { 
-        console.log('BBB')
         const scaledNum = flr.classType.slice(-1) * 10
         flr.classType = scaledNum
-        console.log(scaledNum)
 
       } else if(power.startsWith('C')) { 
 
-        console.log('CCCC')
         const scaledNum = flr.classType.slice(-1) * 100
-        console.log(scaledNum)
         flr.classType = scaledNum
 
       } else if(power.startsWith('M')) { 
-        console.log('MMM')
         const scaledNum = flr.classType.slice(-1) * 1000
         flr.classType = scaledNum
-        console.log(scaledNum)
 
       } else if(power.startsWith('X')) { 
-        console.log('XXXXX')
         const scaledNum = flr.classType.slice(-1) * 10000
         flr.classType = scaledNum
-        console.log(scaledNum)
 
       }
     })

@@ -1,47 +1,42 @@
 import React from 'react'
 import { format, formatDistance, formatRelative, parseISO, subDays } from 'date-fns'
+import { GiWindsock } from "react-icons/gi";
+import { BsChevronCompactRight } from "react-icons/bs";
+
+import SunCme from './SunCme';
+
 
 
   
 const Cme = ({cmeData}) => {
-    // const dates = []
-    // const createList = async () => { 
-    //     if(cmeData) { 
-    //     await cmeData.map((data) =>  { 
-    //       const date = []
-    //       date.push(data.beginTime, data.peakTime, data.endTime)
-    //       dates.push(date)
-    //       }
-    //     )
-    //     console.log('dates: ', dates)
-    //   }
-    // }
-    // if(cmeData) { 
-    //     createList()
-    // }
+  console.log(cmeData)
 
-    const CustomTooltip = ({ active, payload, label }) => {
-        if (active) {
-          return (
-            <div className="tooltip">
-              <h4>{format(parseISO(label), "eeee, d MMM, yyyy")}</h4>
-              <p>${payload[0].value.toFixed(2)} CAD</p>
-            </div>
-          );
-        }
-    }
+
 
   if(cmeData) { 
     console.log(cmeData[0].latitude)
     return (
-        <div className='p-4 text-lg bg-zinc-800 rounded-md col-span-2 h-full w-full'>
-         <h1 className='p-4'>Coronal Mass Ejection</h1>
-         <div className='px-4 py-4'>
-
+    <div className='p-4 text-lg bg-zinc-800 rounded-md h-full col-span-2'>  
+      <div className='px-6 pb-4 pt-2'>
+        <h1 className='text-2xl'>Coronal Mass ejection</h1>
+        <h1 className='text-lg font-light text-opacity-80 text-white'>Peak time classification</h1>
+          <div>
+          <div className='pl-7 text-blue-400 pt-1 font-semibold'>Earth</div>
+          </div>
+        <div className='grid grid-cols-3 gap-2 py-4'>
+        <SunCme rotate={-12}/>
+        <SunCme rotate={90}/>
+        <SunCme rotate={-45}/>
+        <SunCme rotate={-50}/>
+        <SunCme rotate={-45}/>
+        <SunCme rotate={90}/>
+        </div>      
+        {/* <div className='p-1 float-right bg-white bg-opacity-90 rounded-full text-black cursor-pointer hover:bg-[]'>
+      <BsChevronCompactRight />
+      </div> */}
       </div>
 
-        </div>
-        
+    </div>
       )
   } else { 
     return( 
