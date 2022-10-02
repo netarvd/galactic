@@ -65,7 +65,7 @@ const SolarWind = ({ wsaData }) => {
   }
 
   return (
-    <div className="col-span-3 flex w-full h-64 overflow-clip rounded-lg relative">
+    <div className="col-span-4 flex w-full h-64 overflow-clip rounded-lg relative">
       <Rain numDrops={speed} baseColor={color} />
       <div className="absolute top-0 left-0 w-1/4 h-full p-8">
         <div className="flex flex-col justify-between h-full">
