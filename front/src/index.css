@@ -4,7 +4,7 @@
 
 @layer utilities {
   .drop {
-    width: 2px;
+    width: 1px;
     height: 89px;
     -webkit-animation: fall 0.63s linear infinite;
     -moz-animation: fall 0.63s linear infinite;

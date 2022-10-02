@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 import Rain from './Rain'
-import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
-import { GiWindsock } from 'react-icons/gi'
 
 const SOLAR_WIND_COLOR_BY_SPEED = {
   1: 'green-300',
@@ -11,12 +10,15 @@ const SOLAR_WIND_COLOR_BY_SPEED = {
   900: 'red-500',
 }
 
-const SolarWindDataProperty = ({ label, children }) => {
+const SolarWindDataProperty = ({ label, color, children }) => {
   if (children) {
     return (
-      <div className="flex flex-row gap-x-2">
-        <label className="font-semibold">{label}:</label>
-        <p>{children}</p>
+      <div
+        className={`px-3 py-1 w-fit flex rounded-full bg-${color} bg-opacity-40 border-${color} border border-opacity-50 align-middle place-items-center`}
+      >
+        <h1 className="text-md font-semibold text-[white] pl-2 inline">
+          {label}<span className="font-light pl-1">{children}</span>
+        </h1>
       </div>
     )
   } else {
@@ -49,7 +51,7 @@ const SolarWind = ({ wsaData }) => {
           Object.keys(SOLAR_WIND_COLOR_BY_SPEED).find((key) => {
             return newSpeed < key
           })
-        ],
+        ] ?? SOLAR_WIND_COLOR_BY_SPEED[900],
       )
     }
   }, [wsaData, currentItemIndex])
@@ -63,66 +65,73 @@ const SolarWind = ({ wsaData }) => {
   }
 
   return (
-    <div className="flex flex-row justify-between bg-zinc-800 rounded-md col-span-4 w-full p-8">
-      <div className="flex flex-col flex-grow">
-        <div>
-          <div className="text-2xl text-white">Solar Wind Forecast</div>
-          <div className="text-lg font-light text-opacity-80 text-white">
-            Predictions and recent history
+    <div className="col-span-4 flex w-full h-64 overflow-clip rounded-lg relative">
+      <Rain numDrops={speed} baseColor={color} />
+      <div className="absolute top-0 left-0 w-1/4 h-full p-8">
+        <div className="flex flex-col justify-between h-full">
+          <div>
+            <div className="text-2xl text-white">Solar Wind Forecast</div>
+            <div className="text-lg font-light text-opacity-80 text-white">
+              Predictions and recent history
+            </div>
+          </div>
+
+          <div className="flex flex-row gap-x-2 items-end">
+            <span className="text-8xl text-white">{speed}</span>
+            <span className="text-3xl font-light">km/s</span>
           </div>
         </div>
-        {wsaData && currentItemIndex && (
-          <div className="flex-grow grid grid-cols-4 justify-center items-center px-8">
-            <div>
-              {currentItemIndex !== 0 && (
-                <BsChevronCompactLeft
-                  className="text-6xl font-bold"
-                  onClick={prevItem}
-                />
-              )}
-            </div>
-            <div className="col-span-2 flex flex-col items-start justify-center gap-y-2">
-              <SolarWindDataProperty label="Impacted">
-                {wsaData[currentItemIndex].impactList
+      </div>
+      {wsaData && currentItemIndex && (
+        <>
+          <div className="absolute top-0 right-0 w-1/4 p-8 flex flex-col justify-center items-end gap-y-2">
+            <SolarWindDataProperty color={color} label="Impacted">
+              {wsaData[currentItemIndex].impactList &&
+                wsaData[currentItemIndex].impactList
                   .map((item) => item.location)
                   .join(', ')}
-              </SolarWindDataProperty>
-              <SolarWindDataProperty label="Estimated Shock Arrival Time">
-                {wsaData[currentItemIndex].estimatedShockArrivalTime}
-              </SolarWindDataProperty>
-              <SolarWindDataProperty label="Is Glancing Blow on Earth">
-                {wsaData[currentItemIndex].isEarthGB ? 'True' : 'False'}
-              </SolarWindDataProperty>
-            </div>
-            <div>
-              {currentItemIndex !== wsaData.length - 1 && (
-                <BsChevronCompactRight
-                  className="text-6xl font-bold"
-                  onClick={nextItem}
-                />
-              )}
-            </div>
+            </SolarWindDataProperty>
+            <SolarWindDataProperty color={color} label="Latitude">
+              {wsaData[currentItemIndex].cmeInputs[0].latitude}
+            </SolarWindDataProperty>
+            <SolarWindDataProperty color={color} label="Longitude">
+              {wsaData[currentItemIndex].cmeInputs[0].longitude}
+            </SolarWindDataProperty>
           </div>
-        )}
-      </div>
-      <div className="w-1/2 pl-12 pr-2">
-        <div className="z-50 flex-none relative w-full h-60">
-          <div className="flex overflow-clip w-full h-full rounded-lg">
-            <Rain numDrops={speed} baseColor={color} />
+          <div className='absolute bottom-0 right-0 p-8 flex flex-row gap-x-2'>
+            <BsChevronLeft className='text-2xl font-extrabold cursor-pointer' onClick={prevItem} />
+            <BsChevronRight className='text-2xl font-extrabold cursor-pointer' onClick={nextItem} />
           </div>
-          <div
-            className={`absolute bottom-4 left-6 px-3 py-1 w-fit flex rounded-full bg-${color} bg-opacity-30 border-${color} border border-opacity-40 align-middle place-items-center`}
-          >
-            <GiWindsock className="text-white" />
-            <h1 className="text-md font-semibold text-[white] pl-2 inline">
-              {speed}
-              <span className="font-light pl-1">km/s</span>
-            </h1>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   )
+
+  // return (
+  //   <div className="flex flex-row justify-between bg-zinc-800 rounded-md col-span-4 w-full p-8">
+  //     <div className="flex flex-col justify-between h-full flex-grow">
+  //       <div>
+  //         <div className="text-2xl text-white">Solar Wind Forecast</div>
+  //         <div className="text-lg font-light text-opacity-80 text-white">
+  //           Predictions and recent history
+  //         </div>
+  //       </div>
+  //       {wsaData && currentItemIndex && (
+  //         <div className="flex flex-row gap-x-2 items-end w-full justify-center">
+  //           <span className='text-8xl text-white'>{speed}</span>
+  //           <span className="text-3xl font-light">km/s</span>
+  //         </div>
+  //       )}
+  //     </div>
+  //     <div className="w-1/2 pl-12 pr-2">
+  //       <div className="z-50 flex-none relative w-full h-60">
+  //         <div className="flex overflow-clip w-full h-full rounded-lg">
+  //           <Rain numDrops={speed} baseColor={color} />
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // )
 }
 
 export default SolarWind

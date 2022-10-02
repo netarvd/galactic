@@ -6,7 +6,6 @@ import { BsChevronCompactRight } from "react-icons/bs";
 import SunCme from './SunCme';
 
 const Cme = ({cmeData}) => {
-  console.log('eminem', cmeData)
   if(cmeData) { 
     console.log(cmeData[0].latitude)
     return (
