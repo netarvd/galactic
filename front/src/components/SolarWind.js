@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Rain from './Rain'
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
+import { GiWindsock } from 'react-icons/gi'
 
 const SOLAR_WIND_COLOR_BY_SPEED = {
   1: 'green-300',
@@ -32,8 +33,15 @@ const SolarWind = ({ wsaData }) => {
     if (wsaData) {
       const newIndex = wsaData.length - 1
       setCurrentItemIndex(newIndex)
+    }
+  }, [wsaData])
+
+  useEffect(() => {
+    if (wsaData && currentItemIndex) {
       const newSpeed = Math.max(
-        ...wsaData[newIndex]['cmeInputs'].map((input) => input['speed']),
+        ...wsaData[currentItemIndex]['cmeInputs'].map(
+          (input) => input['speed'],
+        ),
       )
       setSpeed(parseInt(newSpeed))
       setColor(
@@ -44,7 +52,7 @@ const SolarWind = ({ wsaData }) => {
         ],
       )
     }
-  }, [wsaData])
+  }, [wsaData, currentItemIndex])
 
   const prevItem = () => {
     setCurrentItemIndex(currentItemIndex - 1)
@@ -98,10 +106,18 @@ const SolarWind = ({ wsaData }) => {
         )}
       </div>
       <div className="flex-none relative">
-        <div className="flex w-60 h-60 overflow-clip rounded-full">
+        <div className="z-40 flex w-60 h-60 overflow-clip rounded-full">
           <Rain numDrops={speed} baseColor={color} />
         </div>
-        <div className="z-50 absolute bottom-0 right-1/2 bg-primary opacity-25 p-2 rounded-md">Speed</div>
+        <div
+          className={`z-50 absolute bottom-2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-3 py-1 w-fit flex rounded-full bg-${color} bg-opacity-30 border-${color} border border-opacity-40 align-middle place-items-center`}
+        >
+          <GiWindsock className="text-white" />
+          <h1 className="text-md font-semibold text-[white] pl-2 inline">
+            {speed}
+            <span className="font-light pl-1">km/s</span>
+          </h1>
+        </div>
       </div>
     </div>
   )
