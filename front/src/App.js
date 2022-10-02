@@ -1,18 +1,16 @@
-import './App.css';
+import React from 'react';
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  BrowserRouter,
-  Routes,
-} from "react-router-dom"; 
+  BrowserRouter, Route, Routes
+} from "react-router-dom";
+import './App.css';
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="App">
-<BrowserRouter>
-    {/* <Navbar /> */}
+    <div className='bg-black min-h-screen w-screen object-center '>
+    <BrowserRouter>
+    <Navbar />
 
       <Routes>
         <Route path="/" element={ <Home/>} />
