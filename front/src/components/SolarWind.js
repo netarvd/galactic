@@ -17,7 +17,8 @@ const SolarWindDataProperty = ({ label, color, children }) => {
         className={`px-3 py-1 w-fit flex rounded-full bg-${color} bg-opacity-40 border-${color} border border-opacity-50 align-middle place-items-center`}>
 
         <h1 className="text-md font-semibold text-[white] pl-2 inline">
-          {label}<span className="font-light pl-1">{children}</span>
+          {label}
+          <span className="font-light pl-1">{children}</span>
         </h1>
       </div>
     )
@@ -57,11 +58,15 @@ const SolarWind = ({ wsaData }) => {
   }, [wsaData, currentItemIndex])
 
   const prevItem = () => {
-    setCurrentItemIndex(currentItemIndex - 1)
+    if (currentItemIndex !== 1) {
+      setCurrentItemIndex(currentItemIndex - 1)
+    }
   }
 
   const nextItem = () => {
-    setCurrentItemIndex(currentItemIndex + 1)
+    if (currentItemIndex !== wsaData.length - 1) {
+      setCurrentItemIndex(currentItemIndex + 1)
+    }
   }
 
   return (
@@ -98,40 +103,20 @@ const SolarWind = ({ wsaData }) => {
               {wsaData[currentItemIndex].cmeInputs[0].longitude}
             </SolarWindDataProperty>
           </div>
-          <div className='absolute bottom-0 right-0 p-8 flex flex-row gap-x-2'>
-            <BsChevronLeft className='text-2xl font-extrabold cursor-pointer' onClick={prevItem} />
-            <BsChevronRight className='text-2xl font-extrabold cursor-pointer' onClick={nextItem} />
+          <div className="absolute bottom-0 right-0 p-8 flex flex-row gap-x-2">
+            <BsChevronLeft
+              className="text-2xl font-extrabold cursor-pointer"
+              onClick={prevItem}
+            />
+            <BsChevronRight
+              className="text-2xl font-extrabold cursor-pointer"
+              onClick={nextItem}
+            />
           </div>
         </>
       )}
     </div>
   )
-
-  // return (
-  //   <div className="flex flex-row justify-between bg-zinc-800 rounded-md col-span-4 w-full p-8">
-  //     <div className="flex flex-col justify-between h-full flex-grow">
-  //       <div>
-  //         <div className="text-2xl text-white">Solar Wind Forecast</div>
-  //         <div className="text-lg font-light text-opacity-80 text-white">
-  //           Predictions and recent history
-  //         </div>
-  //       </div>
-  //       {wsaData && currentItemIndex && (
-  //         <div className="flex flex-row gap-x-2 items-end w-full justify-center">
-  //           <span className='text-8xl text-white'>{speed}</span>
-  //           <span className="text-3xl font-light">km/s</span>
-  //         </div>
-  //       )}
-  //     </div>
-  //     <div className="w-1/2 pl-12 pr-2">
-  //       <div className="z-50 flex-none relative w-full h-60">
-  //         <div className="flex overflow-clip w-full h-full rounded-lg">
-  //           <Rain numDrops={speed} baseColor={color} />
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // )
 }
 
 export default SolarWind
