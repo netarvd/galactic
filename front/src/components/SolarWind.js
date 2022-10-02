@@ -99,8 +99,8 @@ const SolarWind = ({ wsaData }) => {
             </SolarWindDataProperty>
           </div>
           <div className='absolute bottom-0 right-0 p-8 flex flex-row gap-x-2'>
-            <BsChevronLeft className='text-2xl font-extrabold cursor-pointer' onClick={prevItem} />
-            <BsChevronRight className='text-2xl font-extrabold cursor-pointer' onClick={nextItem} />
+            { currentItemIndex !== 1 && <BsChevronLeft className='text-2xl font-extrabold cursor-pointer' onClick={prevItem} />}
+            { currentItemIndex !== wsaData.length -1 && <BsChevronRight className='text-2xl font-extrabold cursor-pointer' onClick={nextItem} />}
           </div>
         </>
       )}
