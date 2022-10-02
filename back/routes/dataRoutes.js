@@ -11,4 +11,8 @@ router.get('/cme', async (req, res) => {
     res.json(await getNASAData(NASA_API_ROUTES.CME));
 })
 
+router.get('/wsa', async (req, res) => {
+    res.json(await getNASAData(NASA_API_ROUTES.WSA));
+})
+
 module.exports = router;
