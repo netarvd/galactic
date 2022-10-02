@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .drop {
+.drop {
   background: -webkit-gradient(
     linear,
     0% 0%,
@@ -24,7 +24,7 @@
 }
 
 /* drop animation styles */
-/* @-webkit-keyframes fall {
+@-webkit-keyframes fall {
   to {
     margin-top: 900px;
   }
@@ -33,10 +33,10 @@
   to {
     margin-top: 900px;
   }
-} */ 
-/* 
+}
+
 @keyframes fall {
   to {
     margin-top: 900px;
   }
-} */
+}
