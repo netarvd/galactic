@@ -29,8 +29,10 @@ function Home() {
       }
       if(flr.peakTime) { 
         const newPeak = flr.peakTime.split('T')
-        const finalPeak = newPeak[1].replace('Z', ' ')
-        flr.peakTime = finalPeak
+        const finalPeak = newPeak[0].replace('Z', ' ')
+        const nice = finalPeak.split('-')
+        const noice = `${nice[1]}-${nice[2]}`
+        flr.peakTime = noice
       }
       const power = flr.classType.slice(1)
       flr.classType = power

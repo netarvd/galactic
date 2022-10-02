@@ -1,73 +1,55 @@
 import { format, parseISO, subDays } from 'date-fns';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useState } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
 
 
 
+
 function Flr({flrData}) {
+
+
+  const getIntroOfPage = (label) => {
+    if (label === 'Page A') {
+      return "Page A is about men's clothing";
+    }
+    if (label === 'Page B') {
+      return "Page B is about women's dress";
+    }
+    if (label === 'Page C') {
+      return "Page C is about women's bag";
+    }
+    if (label === 'Page D') {
+      return 'Page D is about household goods';
+    }
+    if (label === 'Page E') {
+      return 'Page E is about food';
+    }
+    if (label === 'Page F') {
+      return 'Page F is about baby food';
+    }
+    return '';
+  };
+
   if(flrData) { 
     console.log('Solar flares: ', flrData)
     const newData = flrData.flat()
   console.log('newData', flrData)
   }
 
-
-
-  const data = [
-    {
-      hour: '17:00',
-      uv: 1,
-      pv: 10,
-      amt: 1,
-    },
-    {
-      hour: '18:00',
-      uv: 2,
-      pv: 3,
-      amt: 5,
-    },
-    {
-      hour: '19:00',
-      uv: 3,
-      pv: 4,
-      amt: 4,
-    },
-    {
-      hour: '20:00',
-      uv: 4,
-      pv: 8,
-      amt: 2000,
-    },
-    {
-      hour: '21:00',
-      uv: 5,
-      pv: 3,
-      amt: 1,
-    },
-    {
-      hour: '22:00',
-      uv: 6,
-      pv: 12,
-      amt: 2,
-    },
-  ];
-
-
-  
-
-// function CustomTooltip({ active, payload, label }) {
-//   if (active) {
-//     return (
-//       <div classhour="tooltip">
-//         <h4>{format(parseISO(label), "eeee, d MMM, yyyy")}</h4>
-//         <p>${payload[0].value.toFixed(2)} CAD</p>
-//       </div>
-//     );
-//   }
-//   return null;
-// }
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className=" bg-[#2451B7]">
+          <p className="label">{`Start time: ${label} : ${payload[0].value}`}</p>
+          <p className="label">{`${label}  ${payload[0].value}`}</p>
+          <p className="intro">{getIntroOfPage(label)}</p>
+          <p className="desc">Anything you want can be displayed here.</p>
+        </div>
+      );
+    }
+  }
 
   if(flrData) { 
     return (
@@ -112,24 +94,26 @@ function Flr({flrData}) {
              tick={{ fill: '#E8E8E8', fontSize: '16px'}}
             axisLine={false}
             tickLine={false}
-            domain={[0, 10]}
+            domain={[0, 16]}
             dataKey="pv" tickFormatter={(number) => {
-                if(number < 3) {
-                  return ['A', number]
-                } else if(number < 6) {
-                  return ['B', number]
+                if(number < 4) {
+                  return ['A', ]
                 } else if(number < 8) {
-                  return ['C', number]
-                } else if(number < 10) {
-                  return['M', number]
+                  return ['B', ]
+                } else if(number < 12) {
+                  return ['C', ]
+                } else if(number < 16) {
+                  return['M', ]
+                } else if(number  === 16) {
+                  return ['X', ]
                 } else { 
-                  return ['X', number]
+                  return ['X', ]
                 }
               }
             }
               
             />
-            <Tooltip />
+            <Tooltip content={CustomTooltip}/>
             {/* <Area  dataKey="power" stroke="#2451B7" fill="url(#color)" /> */}
 
             <Area type="monotone" dataKey="classType" stroke="#8884d8" fill="#8884d8" />
