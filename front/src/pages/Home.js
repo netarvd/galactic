@@ -5,6 +5,7 @@ import axios from 'axios';
 function Home() {
   const [flrData, setFlrData] = useState()
   const [cmeData, setCmeData] = useState()
+  const [wsaData, setWsaData] = useState()
   // console.log('Coronal mass ejection: ', cmeData)
 
 
@@ -14,7 +15,8 @@ function Home() {
 
     Promise.all([
       axios.get("http://localhost:3001/api/flr/"),
-      axios.get("http://localhost:3001/api/cme/")
+      axios.get("http://localhost:3001/api/cme/"),
+      axios.get("http://localhost:3001/api/wsa/")
   ])
   .then(response => {
     console.log(response[0].data, 'hsdsdjfsdfbsdjbf')
@@ -24,6 +26,7 @@ function Home() {
       setFlrData(response[0].data)
 
       setCmeData(response[1].data)
+      setWsaData(response[2].data)
   })
   .catch(error => {
       console.log(error);
@@ -45,7 +48,7 @@ function Home() {
       <option value="audi">Audi</option>
     </select>
     </form>
-    <Dash flrData={flrData} cmeData={cmeData}/>
+    <Dash flrData={flrData} cmeData={cmeData} wsaData={wsaData} />
     </div>
   )
 }

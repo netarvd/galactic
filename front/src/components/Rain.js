@@ -23,16 +23,18 @@ const Rain = ({ numDrops, baseColor }) => {
   }, [numDrops])
 
   return (
-    <div className='-rotate-45 w-full relative'>
-      {dropCoordinates.map((drop, i) => {
-        return (
-          <div
-            className={`drop absolute bg-gradient-to-b from-${baseColor} to-white`}
-            style={{left: drop.dropLeft, top: drop.dropTop}}
-            key={`drop${i}`}
-          ></div>
-        )
-      })}
+    <div className='w-full bg-[url("/public/space-bg.jpg")]'>
+      <div className='-rotate-45 relative'>
+        {dropCoordinates.map((drop, i) => {
+          return (
+            <div
+              className={`drop absolute bg-gradient-to-b from-${baseColor} to-white`}
+              style={{ left: drop.dropLeft, top: drop.dropTop }}
+              key={`drop${i}`}
+            ></div>
+          )
+        })}
+      </div>
     </div>
   )
 }

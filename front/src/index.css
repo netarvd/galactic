@@ -4,25 +4,11 @@
 
 @layer utilities {
   .drop {
-    width: 1px;
+    width: 2px;
     height: 89px;
-    /* position: absolute;
-    bottom: 200px; */
     -webkit-animation: fall 0.63s linear infinite;
     -moz-animation: fall 0.63s linear infinite;
   }
-
-  /* drop animation styles */
-  /* @-webkit-keyframes fall {
-    to {
-      margin-top: 900px;
-    }
-  }
-  @-moz-keyframes fall {
-    to {
-      margin-top: 900px;
-    }
-  } */
 
   @keyframes fall {
     to {

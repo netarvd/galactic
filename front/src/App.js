@@ -1,15 +1,10 @@
 import React from 'react';
-import './App.css';
 import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  BrowserRouter,
-  Routes,
-} from "react-router-dom"; 
-import Home from './pages/Home';
+  BrowserRouter, Route, Routes
+} from "react-router-dom";
+import './App.css';
 import Navbar from './components/Navbar';
-import SolarWind from './components/SolarWind';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -19,7 +14,6 @@ function App() {
 
       <Routes>
         <Route path="/" element={ <Home/>} />
-        <Route path="/solar-wind" element={ <SolarWind speed={541.0} />} />
       </Routes>
     {/* <Footer /> */}
 
