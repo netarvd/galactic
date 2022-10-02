@@ -78,14 +78,7 @@ function Home() {
         <h1 className='text-white px-24 py-2 text-4xl'>Space Weather</h1>
     </div>
 
-    <form className='px-24 pt-2'>
-    <select name="cars" id="cars" form="carform">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="opel">Opel</option>
-      <option value="audi">Audi</option>
-    </select>
-    </form>
+   
     <Dash flrData={flrData} cmeData={cmeData} wsaData={wsaData} />
     </div>
   )
