@@ -23,7 +23,7 @@ const Rain = ({ numDrops, baseColor }) => {
   }, [numDrops])
 
   return (
-    <div className='w-full relative'>
+    <div className='-rotate-45 w-full relative'>
       {dropCoordinates.map((drop, i) => {
         return (
           <div
