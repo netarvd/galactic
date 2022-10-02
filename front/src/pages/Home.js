@@ -17,7 +17,12 @@ function Home() {
       axios.get("http://localhost:3001/api/cme/")
   ])
   .then(response => {
+    console.log(response[0].data, 'hsdsdjfsdfbsdjbf')
+    response[0].data.map((flr) => { 
+      flr.beginTime = flr.beginTime.toISOString()
+    })
       setFlrData(response[0].data)
+
       setCmeData(response[1].data)
   })
   .catch(error => {
