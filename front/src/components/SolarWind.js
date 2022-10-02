@@ -63,7 +63,7 @@ const SolarWind = ({ wsaData }) => {
   }
 
   return (
-    <div className="flex flex-row justify-between p-8 bg-zinc-800 rounded-md col-span-4 space-y-2">
+    <div className="flex flex-row justify-between bg-zinc-800 rounded-md col-span-4 w-full p-8">
       <div className="flex flex-col flex-grow">
         <div>
           <div className="text-2xl text-white">Solar Wind Forecast</div>
@@ -105,18 +105,20 @@ const SolarWind = ({ wsaData }) => {
           </div>
         )}
       </div>
-      <div className="flex-none relative">
-        <div className="z-40 flex w-60 h-60 overflow-clip rounded-full">
-          <Rain numDrops={speed} baseColor={color} />
-        </div>
-        <div
-          className={`z-50 absolute bottom-2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-3 py-1 w-fit flex rounded-full bg-${color} bg-opacity-30 border-${color} border border-opacity-40 align-middle place-items-center`}
-        >
-          <GiWindsock className="text-white" />
-          <h1 className="text-md font-semibold text-[white] pl-2 inline">
-            {speed}
-            <span className="font-light pl-1">km/s</span>
-          </h1>
+      <div className="w-1/2 pl-12 pr-2">
+        <div className="z-50 flex-none relative w-full h-60">
+          <div className="flex overflow-clip w-full h-full rounded-lg">
+            <Rain numDrops={speed} baseColor={color} />
+          </div>
+          <div
+            className={`absolute bottom-4 left-6 px-3 py-1 w-fit flex rounded-full bg-${color} bg-opacity-30 border-${color} border border-opacity-40 align-middle place-items-center`}
+          >
+            <GiWindsock className="text-white" />
+            <h1 className="text-md font-semibold text-[white] pl-2 inline">
+              {speed}
+              <span className="font-light pl-1">km/s</span>
+            </h1>
+          </div>
         </div>
       </div>
     </div>
