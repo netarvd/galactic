@@ -3,6 +3,7 @@ const NASA_API_BASE_URL = "https://kauai.ccmc.gsfc.nasa.gov/DONKI/WS/get/";
 const NASA_API_ROUTES = {
     CME: "CMEAnalysis",
     FLR: "FLR",
+    WSA: 'WSAEnlilSimulations',
     GST: 'GST'
 };
 
