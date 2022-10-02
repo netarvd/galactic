@@ -3,44 +3,33 @@ import Dash from '../components/Dash'
 import axios from 'axios';
 
 function Home() {
-  const [flr, setFlr] = useState()
-  console.log(flr)
-  
+  const [flrData, setFlrData] = useState()
+  const [cmeData, setCmeData] = useState()
+  // console.log('Coronal mass ejection: ', cmeData)
+
+
 
 
   useEffect(() => { 
-    const getData  = async () => { 
-      try { 
-        const {data}  = await axios.get(`http://localhost:3001/api/flr/`)
-        setFlr(data)
-      } catch(err) { 
-        console.log(err)
-      }
-  }
-  getData()
-  }, [])
 
-  // const dates = []
+    Promise.all([
+      axios.get("http://localhost:3001/api/flr/"),
+      axios.get("http://localhost:3001/api/cme/")
+  ])
+  .then(response => {
+      setFlrData(response[0].data)
+      setCmeData(response[1].data)
+  })
+  .catch(error => {
+      console.log(error);
+  });
 
-//   const createList = async () => { 
-//     if(flr) { 
-//     await flr.map((data) =>  { 
-//       const date = []
-//       date.push(data.beginTime, data.peakTime, data.endTime)
-//       dates.push(date)
-//       console.log('dates: ', dates)
-//       }
-//     )
-//   }
-// }
-//   createList()
-
-
+}, [])
 
   return (
     <div className='py-12'>
     <div>
-        <h1 className='text-white px-24 py-2 text-4xl'>Solar Dashboard</h1>
+        <h1 className='text-white px-24 py-2 text-4xl'>Space Weather</h1>
     </div>
 
     <form className='px-24 pt-2'>
@@ -51,9 +40,9 @@ function Home() {
       <option value="audi">Audi</option>
     </select>
     </form>
-    <Dash flr={flr} />
+    <Dash flrData={flrData} cmeData={cmeData}/>
     </div>
   )
 }
 
-export default Home
+export default Home;
