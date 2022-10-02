@@ -8,9 +8,6 @@ function Home() {
   const [wsaData, setWsaData] = useState()
   console.log('Coronal mass ejection: ', cmeData)
 
-
-
-
   useEffect(() => { 
     Promise.all([
       axios.get("http://localhost:3001/api/flr/"),
@@ -67,8 +64,8 @@ function Home() {
   
       //CME data
 
+      
 
-  
   
     })
   .catch(error => {
@@ -80,10 +77,8 @@ function Home() {
   return (
     <div className='py-12'>
     <div>
-        <h1 className='text-white px-24 py-2 text-4xl'>Space Weather</h1>
+        {/* <h1 className='text-white px-24 py-2 text-4xl'>Space Weather</h1> */}
     </div>
-
-   
     <Dash flrData={flrData} cmeData={cmeData} wsaData={wsaData} />
     </div>
   )

@@ -20,7 +20,7 @@ const Cme = ({cmeData}) => {
 
           <div>
             <div className='content-end flex align-bottom gap-2'>
-            <div className='rounded-full px-2 bg-blue-400 text-blue-400 text-sm py-1 bg-opacity-25 font-bold'>Earth</div>
+            {/* <div className='rounded-full px-2 bg-blue-400 text-blue-400 text-sm py-1 bg-opacity-25 font-bold'>Earth</div> */}
             <div className='rounded-full px-2 bg-[#FF2257] text-[#FF2257] text-sm py-1 bg-opacity-25 font-bold'>Sun</div>
             <div className='px-2 text-[#fa70c5] text-sm py-1 font-bold bg-[#fa70c5] bg-opacity-25 rounded-full'>CME</div>
           </div>

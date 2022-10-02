@@ -14,8 +14,8 @@ const SolarWindDataProperty = ({ label, color, children }) => {
   if (children) {
     return (
       <div
-        className={`px-3 py-1 w-fit flex rounded-full bg-${color} bg-opacity-40 border-${color} border border-opacity-50 align-middle place-items-center`}
-      >
+        className={`px-3 py-1 w-fit flex rounded-full bg-${color} bg-opacity-40 border-${color} border border-opacity-50 align-middle place-items-center`}>
+
         <h1 className="text-md font-semibold text-[white] pl-2 inline">
           {label}<span className="font-light pl-1">{children}</span>
         </h1>
