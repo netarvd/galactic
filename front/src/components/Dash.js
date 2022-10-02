@@ -6,6 +6,7 @@ import SolarWind from './SolarWind'
 // const data = [{name: 'Page A', uv: 400, pv: 2400, amt: 2400}];
 
 function Dash({ flrData, cmeData, wsaData }) {
+
   return (
     <div className="mx-20 grid grid-cols-4 gap-4 py-2 rounded-md px-4 text-stone-200">
       <Flr flrData={flrData} />

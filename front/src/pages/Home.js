@@ -6,7 +6,6 @@ function Home() {
   const [flrData, setFlrData] = useState()
   const [cmeData, setCmeData] = useState()
   const [wsaData, setWsaData] = useState()
-  // console.log('Coronal mass ejection: ', cmeData)
   console.log('Coronal mass ejection: ', cmeData)
 
 
@@ -19,6 +18,7 @@ function Home() {
       axios.get("http://localhost:3001/api/wsa/")
   ])
   .then(response => {
+    //setting the FLR data
     response[0].data.map((flr) => { 
       if(flr.beginTime) { 
         const newBeginning = flr.beginTime.split('T')
@@ -42,7 +42,6 @@ function Home() {
         const scaledNum =  flr.classType = flr.classType.slice(-1) 
         flr.classType = scaledNum
 
-
       } else if(power.startsWith('B')) { 
         const scaledNum = flr.classType.slice(-1) * 10
         flr.classType = scaledNum
@@ -65,7 +64,13 @@ function Home() {
       setFlrData(response[0].data)
       setCmeData(response[1].data)
       setWsaData(response[2].data)
-  })
+  
+      //CME data
+
+
+  
+  
+    })
   .catch(error => {
       console.log(error);
   });
