@@ -5,6 +5,7 @@ const randRange = (minNum, maxNum) => {
 }
 
 const createDrops = (numDrops) => {
+  console.log(numDrops);
   const dropCoordinates = []
   for (let i = 1; i < numDrops; i++) {
     const dropLeft = randRange(0, 1600)
@@ -17,12 +18,10 @@ const createDrops = (numDrops) => {
 
 const Rain = ({ numDrops, baseColor }) => {
   const [dropCoordinates, setDropCoordinates] = useState([])
-  const [color, setColor] = useState();
 
   useEffect(() => {
-    setDropCoordinates(createDrops(numDrops))
-    setColor(baseColor);
-  }, [numDrops, baseColor])
+    setDropCoordinates(createDrops(numDrops*0.8))
+  }, [numDrops])
 
   return (
     <div className='relative w-full bg-[url("/public/space-bg.jpg")]'>
