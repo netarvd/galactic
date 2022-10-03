@@ -25,12 +25,12 @@ function SunCme({data}) {
         <h1 className='text-sm opacity-90'>{`${shortTime[1]}-${shortTime[2]}`}</h1>
         </div>
         </div>
-        <div className='py-4 h-24 relative pl-1  rounded-xl '>         
-        <div className={
+        <div className='py-4 h-24 relative pl-1 rounded-xl grid place-items-center grid-cols-2'>    
 
-        `-rotate-45 
-        h-full bg-[#FF2257] border-b-8 border-[#fa70c5] shadow-sm shadow-[#fa70c5] bg-opacity-60 rounded-full aspect-square float-left`} /> 
+        <div className={`-rotate-45 
+        h-full bg-[#FF5604] border-b-8 border-[#fa70c5] shadow-sm shadow-[#fa70c5] bg-opacity-70 rounded-full aspect-square float-left`} /> 
 
+        <div className='h-2 w-2 bg-blue-400 border-b-8 border-blue-400 bg-opacity-70 rounded-full aspect-square float-left'> </div>
         </div>
         <div className='pt-4'>
         <div className='place-content-between flex'>

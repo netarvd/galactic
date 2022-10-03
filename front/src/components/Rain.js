@@ -12,7 +12,6 @@ const createDrops = (numDrops) => {
     const dropTop = randRange(-1000, 1400)
     dropCoordinates.push({ dropLeft, dropTop })
   }
-
   return dropCoordinates
 }
 
