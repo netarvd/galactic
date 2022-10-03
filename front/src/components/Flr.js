@@ -47,7 +47,7 @@ function Flr({flrData}) {
 
   if(flrData) { 
     return (
-        <div className='p-4 text-lg bg-zinc-800 rounded-md h-full col-span-2'>
+        <div className='p-4 text-lg bg-zinc-800 rounded-md h-full col-span-4 lg:col-span-2'>
          <div className='flex place-content-between px-6 pb-4 pt-2'>
 
          <div>

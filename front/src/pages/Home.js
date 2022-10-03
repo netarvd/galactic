@@ -61,12 +61,7 @@ function Home() {
       setFlrData(response[0].data)
       setCmeData(response[1].data)
       setWsaData(response[2].data)
-  
-      //CME data
 
-      
-
-  
     })
   .catch(error => {
       console.log(error);
@@ -77,7 +72,7 @@ function Home() {
   return (
     <div className='py-12'>
     <div>
-        <h1 className='text-white px-24 py-2 text-5xl pb-2'>Space Weather</h1>
+        <h1 className='text-white px-24 py-2 text-5xl pb-2'>Live Space Weather</h1>
         <h1 className='text-white px-24 py-2 text-xl pb-8 text-opacity-80'>From NASA's satellites, to your laptop.</h1>
     </div>
     <Dash flrData={flrData} cmeData={cmeData} wsaData={wsaData} />

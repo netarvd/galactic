@@ -9,7 +9,7 @@ const Cme = ({cmeData}) => {
   if(cmeData) { 
     console.log(cmeData[0].latitude)
     return (
-    <div className='p-4 text-lg bg-zinc-800 rounded-md h-full col-span-2'>
+    <div className='p-4 text-lg bg-zinc-800 rounded-md h-full col-span-4 md:col-span-2 '>
 
           <div className='px-6 pb-4 pt-2 flex place-content-between items-end'>
 
@@ -30,7 +30,7 @@ const Cme = ({cmeData}) => {
           </div>
 
 
-        <div className=' grid grid-cols-3 gap-3 py-4 px-6 '>
+        <div className=' grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3  gap-3 py-4 px-6 '>
         {cmeData.slice(0, 6).map((data) => { 
           return <SunCme data={data}/>
         })}

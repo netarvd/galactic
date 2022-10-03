@@ -41,7 +41,7 @@ function SunCme({data}) {
         <h1>Lat <span className='font-bold'>{data.longitude}</span></h1>
 
         </div>
-        <div className='float-right text-sm underline text-[#FF5604] text-opacity-70'><a href={data.link}rel="noopener noreferrer" target="_blank">Event</a></div>
+        <div className='float-right text-sm underline text-[#FF5604] text-opacity-70'><a href={data.link} rel="noopener noreferrer" target="_blank">Event</a></div>
 
         </div>    
 
