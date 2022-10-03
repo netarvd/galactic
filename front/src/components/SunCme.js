@@ -6,6 +6,8 @@ import { TbWorldLatitude } from "react-icons/tb";
 function SunCme({data}) {
   console.log(data)
   const time = data.time21_5.split('T');
+
+  const hour = time[1].slice(0, -1)
   const shortTime = time[0].split('-');
 
   //Rotation 
@@ -21,9 +23,9 @@ function SunCme({data}) {
         <GiWindsock className='text-white' size={20}/> 
         <h1 className='text-xs font-semibold text-[white] pl-2 inline'>{data.speed}<span className='font-light pl-1'>km/s</span></h1>
         </div>
-        <div className='align-middle grid place-items-center '>
-        <h1 className='text-sm opacity-90'>{`${shortTime[1]}-${shortTime[2]}`}</h1>
-        </div>
+        <div className='align-middle grid right'>
+        <h1 className='text-sm opacity-90 text-end'>{`${shortTime[1]}-${shortTime[2]}`}</h1>
+        <h1 className='text-xs opacity-90 float-righ text-opacity-75 text-white text-end'>{`${hour}`}</h1>        </div>
         </div>
         <div className='py-4 h-24 relative pl-1 rounded-xl grid place-items-center grid-cols-2'>    
 

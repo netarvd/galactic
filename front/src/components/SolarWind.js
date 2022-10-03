@@ -105,11 +105,11 @@ const SolarWind = ({ wsaData }) => {
           </div>
           <div className="absolute bottom-0 right-0 p-8 flex flex-row gap-x-2">
             <BsChevronLeft
-              className="text-2xl font-extrabold cursor-pointer"
+              className="text-2xl font-extrabold cursor-pointer hover:text-red-500"
               onClick={prevItem}
             />
             <BsChevronRight
-              className="text-2xl font-extrabold cursor-pointer"
+              className="text-2xl font-extrabold cursor-pointer hover:text-red-500"
               onClick={nextItem}
             />
           </div>

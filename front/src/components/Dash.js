@@ -13,9 +13,7 @@ function Dash({ flrData, cmeData, wsaData }) {
       <Flr flrData={flrData} />
 
       <Cme cmeData={cmeData} />
-      <div className='w-full '></div>
-
-      {/* <div className='p-4 text-lg bg-zinc-800 rounded-md h-52 col-span-4'>KP Index</div> */}
+      <div className='w-full'></div>
     </div>
   )
 }
