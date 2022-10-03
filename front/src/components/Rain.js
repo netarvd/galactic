@@ -5,7 +5,7 @@ const randRange = (minNum, maxNum) => {
 }
 
 const createDrops = (numDrops) => {
-  console.log(numDrops);
+  // console.log(numDrops);
   const dropCoordinates = []
   for (let i = 1; i < numDrops; i++) {
     const dropLeft = randRange(0, 1600)

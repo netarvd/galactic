@@ -6,7 +6,7 @@ function Home() {
   const [flrData, setFlrData] = useState()
   const [cmeData, setCmeData] = useState()
   const [wsaData, setWsaData] = useState()
-  console.log('Coronal mass ejection: ', cmeData)
+  // console.log('Coronal mass ejection: ', cmeData)
 
   useEffect(() => { 
     Promise.all([
@@ -36,24 +36,26 @@ function Home() {
 
       const power = flr.classType
       if(power.startsWith('A')) { 
-        const scaledNum =  flr.classType = flr.classType.slice(-1) 
+        const scaledNum =  (flr.classType.slice(-1) + 1) * 1
         flr.classType = scaledNum
 
       } else if(power.startsWith('B')) { 
-        const scaledNum = flr.classType.slice(-1) * 10
+        const scaledNum = (flr.classType.slice(-1) + 1) * 10
         flr.classType = scaledNum
 
       } else if(power.startsWith('C')) { 
 
-        const scaledNum = flr.classType.slice(-1) * 100
+        const scaledNum = (flr.classType.slice(-1) + 1) * 100
         flr.classType = scaledNum
 
       } else if(power.startsWith('M')) { 
-        const scaledNum = flr.classType.slice(-1) * 1000
+        console.log( 'before', flr.classType)
+        const scaledNum = (flr.classType.slice(-1) + 1) * 1000
+        console.log('After', scaledNum)
         flr.classType = scaledNum
 
       } else if(power.startsWith('X')) { 
-        const scaledNum = flr.classType.slice(-1) * 10000
+        const scaledNum = (flr.classType.slice(-1) + 1) * 10000
         flr.classType = scaledNum
 
       }

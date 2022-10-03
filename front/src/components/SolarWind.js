@@ -28,6 +28,7 @@ const SolarWindDataProperty = ({ label, color, children }) => {
 }
 
 const SolarWind = ({ wsaData }) => {
+  console.log(wsaData, 'wsaDatawsaDatawsaDatawsaDatawsaData!!!')
   const [currentItemIndex, setCurrentItemIndex] = useState()
   const [color, setColor] = useState(SOLAR_WIND_COLOR_BY_SPEED[1])
   const [speed, setSpeed] = useState(1)
@@ -77,7 +78,7 @@ const SolarWind = ({ wsaData }) => {
           <div>
             <div className="text-2xl text-white">Solar Wind Forecast</div>
             <div className="text-lg font-light text-opacity-80 text-white">
-              Predictions and recent history
+            WSA 
             </div>
           </div>
 
