@@ -9,7 +9,6 @@ const SOLAR_WIND_COLOR_BY_SPEED = {
   600: 'orange-400',
   900: 'red-500',
 }
-
 const SolarWindDataProperty = ({ label, color, children }) => {
   if (children) {
     return (

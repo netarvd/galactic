@@ -1,9 +1,7 @@
-import { format, parseISO, subDays } from 'date-fns';
-import React, { PureComponent, useState } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import React from 'react'
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
-
-function Flr({flrData}) {
+function SFChild({flrData}) {
 
   const getIntroOfPage = (label) => {
     if (label === 'Page A') {
@@ -27,7 +25,6 @@ function Flr({flrData}) {
     return '';
   };
 
-
   const CustomTooltip = ({ active, payload, label }) => {
 
     if (active && payload && payload.length) {
@@ -39,31 +36,8 @@ function Flr({flrData}) {
       );
     }
   }
-
-  if(flrData) { 
-    return (
-        <div className='p-4 text-lg bg-white bg-opacity-10 rounded-xl h-full col-span-4 lg:col-span-2'>
-         <div className='flex place-content-between px-6 pb-4 pt-2'>
-
-         <div>
-            <h1 className='text-2xl text-white'>Solar Flare</h1>
-            <h1 className='text-lg font-light text-opacity-80 text-white'>Peak time classification</h1>
-          </div>
-          <div className=' grid items-end'>
-            <div className='content-end flex align-bottom gap-2 items-end text-[#FF5604] font-semibold'>
-            <h1 className='text-sm content-end bg-bottom items-end'>Danger bar</h1>
-            <div className='rounded-full px-2 bg-[#FF5604] text-[#FF5604] text-sm py-1 bg-opacity-5 text-opacity-50 font-bold'>A</div>
-            <div className='rounded-full px-2 bg-[#FF5604] text-[#FF5604] text-sm py-1 bg-opacity-25 font-bold text-opacity-60'>B</div>
-            <div className='px-2 text-[#FF5604] text-sm py-1 font-bold bg-[#FF5604] bg-opacity-50 rounded-full text-opacity-70'>C</div>
-            <div className='px-2 text-white text-opacity-60 text-sm py-1 font-bold bg-[#FF5604] bg-opacity-75 rounded-full'>M</div>
-            <div className='px-2 text-white text-opacity-90 text-sm py-1 font-bold bg-[#FF5604] bg-opacity-90 rounded-full '>X</div>
-
-          </div>
-
-          </div>
-        </div>
-
-<div className='pt-3'>
+  return (
+    <div className='pt-3'>
         <ResponsiveContainer width="100%" height={420}>
           <AreaChart data={flrData}
           
@@ -73,7 +47,6 @@ function Flr({flrData}) {
               left: -16,
               bottom: 0,
             }}
-         
          >
            <defs>
           <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
@@ -115,16 +88,7 @@ function Flr({flrData}) {
           </AreaChart>
         </ResponsiveContainer>
 </div>
-           
-        </div>
-      )
-  } else { 
-    return( 
-        <div>
-            <h1>Loading...</h1>
-        </div>
-    )
-  }
+  )
 }
 
-export default Flr;
+export default SFChild
