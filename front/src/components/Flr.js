@@ -4,7 +4,6 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 
 function Flr({flrData}) {
-  console.log(flrData, 'flrDataflrDataflrDataflrDataflrDataflrData')
 
   const getIntroOfPage = (label) => {
     if (label === 'Page A') {
@@ -90,7 +89,7 @@ function Flr({flrData}) {
             axisLine={false}
             tickLine={false}
             />
-            <YAxis 
+            <YAxis
              tick={{ fill: '#E8E8E8', fontSize: '14px'}}
             axisLine={false}
             tickLine={false}

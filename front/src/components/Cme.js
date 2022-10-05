@@ -30,8 +30,10 @@ const Cme = ({cmeData}) => {
 
 
         <div className=' grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3  gap-3 py-4 px-6 '>
-        {cmeData.slice(0, 6).map((data) => { 
-          return <SunCme data={data}/>
+        {cmeData.slice(0, 6).map((data, index) => { 
+          return <SunCme 
+          key={index}
+          data={data}/>
         })}
         </div>
 

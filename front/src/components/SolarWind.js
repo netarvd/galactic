@@ -28,7 +28,6 @@ const SolarWindDataProperty = ({ label, color, children }) => {
 }
 
 const SolarWind = ({ wsaData }) => {
-  console.log(wsaData, 'wsaDatawsaDatawsaDatawsaDatawsaData!!!')
   const [currentItemIndex, setCurrentItemIndex] = useState()
   const [color, setColor] = useState(SOLAR_WIND_COLOR_BY_SPEED[1])
   const [speed, setSpeed] = useState(1)
