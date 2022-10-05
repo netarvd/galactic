@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react'
 import Dash from '../components/Dash'
 import axios from 'axios';
+import { BiSend } from 'react-icons/bi';
 
 function Home() {
 
@@ -76,51 +77,51 @@ function Home() {
 }, [])
 
 
-
+//Send Amitay1599@gmail.com the content 
 const handleSubmit = async (e) => {
   e.preventDefault()
   const newFormData = new FormData()
   newFormData.append('userName', 'noamCohen');
-  // axios({
-  //   method: 'post', 
-  //   url: 'http://localhost:3001/api/email', 
-  //   body: newFormData,
-  //   headers: { "Content-Type": "multipart/form-data" }
-  // })
-   axios.post('http://localhost:3001/api/email', {
+
+    axios.post('http://localhost:3001/api/email', {
     data: content
    })
     .then((response) => {
       console.log(response);
       setMessage(true)
+
     })
     .catch( (response) => {
       console.log(response);
     });
     setContent('')
+
 }
 
   return (
     <div className='py-12 px-24'>
-      <div className='pb-4 flex place-content-between place-items-end'>
+      <div className=' pb-2 flex place-content-between place-items-end center'>
         <div>
           <h1 className='text-white py-2 text-5xl'>Live Space Weather</h1>
           <h1 className='text-white py-2 text-xl text-opacity-80'>From NASA's satellites, to your laptop.</h1>
         </div>
-          <div className='text-orange-700 font-semibold cursor-pointer'>
-          <p className='pl-3 py-2'>Ask for a new fetaurs!</p>
-
-          <form 
+          <div className='text-orange-700 font-semibold'>
+          <p className='pl-3 py-2'>Suggest a feature!</p>
+          <form  
+            className='flex pb-2'
             onSubmit={handleSubmit}>
             <input 
-            onChange={e => setContent(e.target.value)} 
+            onChange={(e) =>  { 
+              setContent(e.target.value) 
+            console.log(e.target.value)} 
+            }
             value={content}
             placeholder='I want KP data...' 
-            className='placeholder:text-orange-500 pl-4 pr-10 py-2 bg-[#ff7e3e] rounded-full bg-opacity-10  text-orange-500 font-semibold text-md border border-orange-600 border-opacity-30 hover:bg-opacity-30 '
+            className='placeholder:text-orange-500 pl-4 w-64 py-2 bg-[#ff7e3e] rounded-full bg-opacity-10  text-orange-500 font-semibold text-md border border-orange-600 border-opacity-30 hover:bg-opacity-30 '
             name='content'
             />
+            <button className='pl-4 hover:text-orange-400 '><BiSend size={50}/></button>
 
-            <button className='pl-4'>Send</button>
           </form>
         </div>
       </div>

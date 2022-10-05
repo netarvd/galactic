@@ -21,11 +21,8 @@ router.get('/wsa', async (req, res) => {
 
 //SendGrid 
 router.post('/email', async (req, res) => {
-    console.log('got the request')
     const content = req.body.data
-    console.log(req.body, 'this is the body!')
-    console.log(req.body.data, 'this is the content!')
-    console.log(content)
+    console.log('This is the content:', content)
     await sendMessage(content)
 })
 
