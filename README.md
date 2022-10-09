@@ -9,6 +9,6 @@ We're continuing to work on this project, so we've tagged the version of our wor
 ## What is ICARUS?
 ICARUS is a web application that aggregates information from NASA sensors, and provides a comfortable and usable interface for research and recreational use.
 
-## Screenshots
+## Screenshot
 ![Mockup](https://projects-readme-amitay.s3.eu-central-1.amazonaws.com/smartmockups_l91eqe9w.png)
 
