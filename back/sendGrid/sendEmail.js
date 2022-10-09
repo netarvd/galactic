@@ -2,10 +2,11 @@ require('dotenv').config()
 const sgMail = require('@sendgrid/mail')
 
 const sendMessage = async (message) => { 
+
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
     const msg = {
-        to: 'amitay1599@gmail.com', // Change to your recipient
-        from: 'amitay1599@gmail.com', // Change to your verified sender
+        to: 'amitay1599@gmail.com', 
+        from: 'amitay1599@gmail.com', 
         subject: `Message from space weather user`,
         text: 'hello', message,
         html: `${message}`,

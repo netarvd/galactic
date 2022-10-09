@@ -28,11 +28,12 @@ function SunCme({data}) {
         <div className='py-4 h-24 relative pl-1 rounded-xl grid place-items-center grid-cols-2'>    
 
         {/* Sun  and CME*/}
-        <div className={`-rotate-45 
-        h-full bg-gradient-to-b  from-[#AC3800] to-[#FF5604] border-b-8 border-[#fa70c5] shadow-sm shadow-[#fa70c5] bg-opacity-70 rounded-full aspect-square float-left`} /> 
+        <div className={`-rotate-45 h-full bg-gradient-to-b  from-[#AC3800] to-[#FF5604] border-b-8 border-[#fa70c5] shadow-sm shadow-[#fa70c5] bg-opacity-70 rounded-full aspect-square float-left`} /> 
 
         {/* Earth */}
-        <div className='h-2 w-2 bg-blue-400 border-b-8 border-blue-400 bg-opacity-70 rounded-full aspect-square float-left'/>
+        <div className='h-2 w-2 bg-blue-400 border-b-8 border-blue-400 bg-opacity-70 rounded-full aspect-square float-left grid place-items-center'>
+        <div className='h-2 w-0.5 bg-green-400 rounded-full' />  
+        </div>
         </div>
         <div className='pt-4'>
         <div className='place-content-between flex'>

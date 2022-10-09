@@ -3,6 +3,7 @@ import Dash from '../components/Dashboard'
 import axios from 'axios';
 import { BiSend } from 'react-icons/bi';
 
+
 function Home() {
 
   //DATA
@@ -108,8 +109,7 @@ const handleSubmit = async (e) => {
           <form  
             className='flex pb-2'
             onSubmit={handleSubmit}>
-            <input 
-            onChange={(e) =>  { 
+            <input  onChange={(e) =>  { 
             setContent(e.target.value) 
             console.log(e.target.value)} 
             }

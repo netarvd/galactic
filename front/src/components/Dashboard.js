@@ -9,11 +9,9 @@ function Dash({ flrData, cmeData, wsaData }) {
 
   return (
     <div className="grid grid-cols-4 gap-6 py-2 rounded-md text-stone-200 ">
-          <SolarWind wsaData={wsaData} />
+      <SolarWind wsaData={wsaData} />
       <Flr flrData={flrData} />
-
       <Cme cmeData={cmeData} />
-      <div className='w-full'></div>
     </div>
   )
 }

@@ -3,7 +3,6 @@ const getNASAData = require('../nasa_api')
 const { NASA_API_ROUTES } = require('../nasa_api/consts')
 const sendMessage = require('../sendGrid/sendEmail')
 
-
 const router = express.Router()
 
 //Nasa
@@ -22,10 +21,7 @@ router.get('/wsa', async (req, res) => {
 //SendGrid 
 router.post('/email', async (req, res) => {
     const content = req.body.data
-    console.log('This is the content:', content)
     await sendMessage(content)
 })
-
-
 
 module.exports = router;

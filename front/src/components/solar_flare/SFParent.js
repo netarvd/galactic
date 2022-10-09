@@ -15,7 +15,7 @@ function Flr({flrData}) {
       <div className='flex place-content-between px-6 pb-4 pt-2'>
         <div>
           <h1 className='text-2xl text-white'>Solar Flare</h1>
-          <h1 className='text-lg font-light text-opacity-80 text-white'>Peak time classification</h1>
+          <h1 className='text-lg font-light text-opacity-80 text-white'>Intense electromagnetic radiation eruption</h1>
           </div>
           <div className=' grid items-end'>
           {/* <div className='content-end flex align-bottom gap-2 items-end text-[#FF5604] font-semibold'>
